@@ -1,0 +1,12 @@
+:root {
+    --color-theme-light: #EAEFEF;
+    --color-theme-light: #B8CFCE;
+    --color-theme-light: #7F8CAA;
+    --color-theme-light: #333446;
+    
+    --color-theme-text: #000000;
+}
+
+body {
+    font-family: 'DM Sans', 'Courier New', Courier, monospace;
+}
