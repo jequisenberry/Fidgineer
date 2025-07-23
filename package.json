@@ -1,0 +1,23 @@
+{
+  "name": "fidgineer",
+  "version": "1.0.0",
+  "description": "- Name: Fidgineer (E-Commerce Site) (working title) \r - Purpose: Create a moch mini E-Commerce Product Showcase\r - Product focus: Novelty - tactile fidget devices, 3d puzzles, and lighters with unique strike mechanisms",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jequisenberry/Fidgineer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jequisenberry/Fidgineer/issues"
+  },
+  "homepage": "https://github.com/jequisenberry/Fidgineer#readme",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

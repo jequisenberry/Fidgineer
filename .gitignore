@@ -1,0 +1,12 @@
+# Node.js dependencies
+node_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Optional: logs and temporary files
+*.log
