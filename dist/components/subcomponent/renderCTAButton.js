@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderCTAButton = renderCTAButton;
 /**
  * Creates a call-to-action (CTA) button.
  * Sets the button's inner text and destination URL.
@@ -9,7 +6,7 @@ exports.renderCTAButton = renderCTAButton;
  * @param href - The URL the button should link to.
  * @returns A <a> element.
  */
-function renderCTAButton(buttonText, href) {
+export function renderCTAButton(buttonText, href) {
     const a = document.createElement('a');
     a.innerText = buttonText;
     a.setAttribute('href', href);

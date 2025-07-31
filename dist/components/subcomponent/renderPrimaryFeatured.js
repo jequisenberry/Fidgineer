@@ -1,14 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderPrimaryFeatured = renderPrimaryFeatured;
-const renderCTAButton_1 = require("./renderCTAButton");
+import { renderCTAButton } from "./renderCTAButton";
 /**
  * Creates the main product showcase.
  * Displays a product image, title, description, and a CTA button.
  *
  * @returns A <div> element containing the product showcase.
  */
-function renderPrimaryFeatured() {
+export function renderPrimaryFeatured() {
     const div = document.createElement('div');
     // Create and append the image
     const img = document.createElement('img');
@@ -21,7 +18,7 @@ function renderPrimaryFeatured() {
     const spacer = document.createElement('div');
     const paragraph = document.createElement('p');
     paragraph.textContent = 'Description here';
-    const button = (0, renderCTAButton_1.renderCTAButton)('Shop Now', '/');
+    const button = renderCTAButton('Shop Now', '/');
     // Append everything in order
     content.appendChild(heading);
     content.appendChild(spacer);

@@ -1,12 +1,95 @@
 :root {
     --color-theme-light: #EAEFEF;
-    --color-theme-light: #B8CFCE;
-    --color-theme-light: #7F8CAA;
-    --color-theme-light: #333446;
+    --color-theme-light-mid: #B8CFCE;
+    --color-theme-dark-mid: #7F8CAA;
+    --color-theme-dark: #333446;
     
-    --color-theme-text: #000000;
+    --color-theme-text: #1E1E1E;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'DM Sans', 'Courier New', Courier, monospace;
+}
+
+.main-container {
+    
+    min-height: 100vh;
+    min-height: 100svh;
+
+    background-color: lightblue;
+}
+
+/* Default Nav Menu */
+nav {
+    font-size: 1rem;
+    color: var(--color-theme-text);
+    background: var(--color-theme-light);
+}
+
+nav ul {
+    display: flex;
+    justify-content:center;
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: flex;
+    align-items: center;
+    padding: .8rem;
+    flex: 0 0 fit-content; 
+}
+
+nav li a {
+    display: block;
+    padding: .8rem;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--color-theme-text);
+    text-shadow: .15rem .15rem .1rem rgba(0,0,0,0.20);
+}
+
+nav li#navSearch {
+    display: flex;
+    justify-content: right;
+    flex: 1 1 auto;
+    padding: 0 .8rem;
+}
+
+nav li#navSearch input {
+    width: 100%;
+    max-width: 20rem;
+    padding: 0.25rem;
+    font-family: 'DM Sans', 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    text-align: right;
+    border: none;
+    border-bottom: var(--color-theme-light-mid) .2rem solid;   
+    background: transparent;
+}
+
+nav li#navSearch input:focus {
+    font-size: 1rem;
+    outline: none;
+    border-bottom: var(--color-theme-text) .2rem solid;   
+    background: transparent;
+}
+
+nav li button#navThemeToggle {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: .8rem;
+    font-size: 1.1rem !important;
+    text-shadow: .15rem .15rem .1rem rgba(0,0,0,0.20);
+    border: none;
+    background: transparent;
 }

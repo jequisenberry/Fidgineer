@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderFooter = renderFooter;
 /**
  * Renders the site footer.
  * Includes site information, customer care links, copyright,
@@ -8,7 +5,7 @@ exports.renderFooter = renderFooter;
  *
  * @returns A <footer> element representing the site footer.
  */
-function renderFooter() {
+export function renderFooter() {
     const footer = document.createElement('footer');
     // Site information and contact section
     const siteInfo = document.createElement('div');

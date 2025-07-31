@@ -4,44 +4,50 @@
  * @returns A <nav> element containing navigation links.
  */
 export function renderNav(): HTMLElement {
-    const nav = document.createElement('nav');
-    nav.classList.add('site-nav');
+    const nav               = document.createElement('nav');
+    const menu              = document.createElement('ul');
 
-    // Main navigation links
-    const primaryNav = document.createElement('div');
-    primaryNav.classList.add('nav-primary');
+    // Home link
+    const homeItem          = document.createElement('li');
+    const homeLink          = document.createElement('a');
+    homeLink.href           = '/';
+    homeLink.textContent    = 'HOME';
+    homeItem.appendChild(homeLink);
 
-    const homeLink = document.createElement('a');
-    homeLink.href = '/';
-    homeLink.textContent = 'HOME';
+    // Search item (non-link)
+    const searchItem        = document.createElement('li');
+    searchItem.id           = 'navSearch';
+    const searchInput       = document.createElement('input');
+    searchInput.type        = 'text';
+    searchInput.placeholder = 'Search...';
+    searchItem.appendChild(searchInput);
 
-    const exploreLink = document.createElement('a');
-    exploreLink.href = '/';
-    exploreLink.textContent = 'EXPLORE';
+    // Cart link
+    const cartItem          = document.createElement('li');
+    const cartLink          = document.createElement('a');
+    cartLink.href           = '/cart';
+    cartLink.innerHTML      = 'CART <span>0</span>';
+    cartItem.appendChild(cartLink);
 
-    primaryNav.appendChild(homeLink);
-    primaryNav.appendChild(exploreLink);
+    // theme toggle
+    const themeToggleItem   = document.createElement('li');
+    const themeToggleButton = document.createElement('button');
+    themeToggleButton.id    = 'navThemeToggle';
+    themeToggleButton.textContent = 'T';
+    themeToggleButton.addEventListener('click', () => {
+        //document.body.classList.toggle('dark-theme');
 
-    // Secondary navigation links (search, cart)
-    const secondaryNav = document.createElement('div');
-    secondaryNav.classList.add('nav-secondary');
+        console.log('Theme toggle clicked');
+    });
+    themeToggleItem.appendChild(themeToggleButton);
 
-    const searchContainer = document.createElement('div');
-    const searchLink = document.createElement('a');
-    searchLink.href = '/';
-    searchLink.textContent = 'SEARCH';
-    searchContainer.appendChild(searchLink);
+    // Append to menu
+    menu.appendChild(homeItem);
+    menu.appendChild(searchItem);
+    menu.appendChild(cartItem);
+    menu.appendChild(themeToggleItem);
 
-    const cartLink = document.createElement('a');
-    cartLink.href = '/';
-    cartLink.innerHTML = `CART <span>0</span>`;
-
-    secondaryNav.appendChild(searchContainer);
-    secondaryNav.appendChild(cartLink);
-
-    // Assemble nav
-    nav.appendChild(primaryNav);
-    nav.appendChild(secondaryNav);
-
+    nav.appendChild(menu);
     return nav;
 }
+

@@ -1,14 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderSecondaryFeatured = renderSecondaryFeatured;
-const renderCTAButton_1 = require("./renderCTAButton");
+import { renderCTAButton } from "./renderCTAButton";
 /**
  * Renders the secondary product showcase section.
  * Displays a horizontal list of product cards with navigation arrows and a CTA button.
  *
  * @returns A <div> element representing the secondary product showcase.
  */
-function renderSecondaryFeatured() {
+export function renderSecondaryFeatured() {
     const showcaseContainer = document.createElement('div');
     // Wrapper for scrollable content
     const scrollWrapper = document.createElement('div');
@@ -27,7 +24,7 @@ function renderSecondaryFeatured() {
     scrollWrapper.appendChild(productList);
     scrollWrapper.appendChild(navRight);
     // CTA button
-    const ctaButton = (0, renderCTAButton_1.renderCTAButton)('Shop Now', '/');
+    const ctaButton = renderCTAButton('Shop Now', '/');
     // Assemble full showcase
     showcaseContainer.appendChild(ctaButton);
     showcaseContainer.appendChild(scrollWrapper);

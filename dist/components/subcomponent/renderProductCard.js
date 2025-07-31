@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderProductCard = renderProductCard;
 /**
  * Creates a product card element.
  * Includes a placeholder name, price, and an add-to-cart section.
  *
  * @returns A <div> element representing a product card.
  */
-function renderProductCard() {
+export function renderProductCard() {
     const cardContainer = document.createElement('div');
     // Content wrapper
     const content = document.createElement('div');

@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderHeader = renderHeader;
-const renderNav_1 = require("./renderNav");
-function renderHeader() {
+import { renderNav } from "./renderNav";
+export function renderHeader() {
     const header = document.createElement('header');
     header.innerHTML = `
         <div>
@@ -11,7 +8,7 @@ function renderHeader() {
             fidgineer
 
         </div>
-        ${(0, renderNav_1.renderNav)()}
+        ${renderNav()}
     `;
     return header;
 }
