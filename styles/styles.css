@@ -72,7 +72,7 @@ nav li#navSearch input {
     font-size: 1rem;
     text-align: right;
     border: none;
-    border-bottom: var(--color-theme-light-mid) .2rem solid;   
+    border-bottom: var(--color-theme-text) .2rem solid;   
     background: transparent;
 }
 
@@ -93,3 +93,22 @@ nav li button#navThemeToggle {
     border: none;
     background: transparent;
 }
+
+
+/* front Page */
+/*
+
+For table or higher.
+
+.front-page-nav {
+    position: fixed;
+    inset: 1rem 1rem auto;
+    z-index: 1000;
+    border-top: .2rem solid rgba(255, 255, 255, 0.3);
+    border-left: .1rem solid rgba(255, 255, 255, 0.2);
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+}
+*/

@@ -1,6 +1,14 @@
-export function renderFrontPage() {
+
+import { renderNav } from "../components/renderNav.js";
+import { renderFeaturedSection } from "../components/renderFeaturedSection.js";
+
+export function renderFrontPage(): HTMLDivElement {
+    
     // console.log(inventory);
+    
+    
     const frontPage = document.createElement('div');
+    
     /*
     frontPage.classList.add("main-container");
 
@@ -13,5 +21,6 @@ export function renderFrontPage() {
     frontPage.appendChild(navBar);
     frontPage.appendChild(featured);
     */
-    return frontPage;
+
+return frontPage;
 }

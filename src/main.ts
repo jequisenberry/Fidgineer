@@ -1,18 +1,30 @@
-import { renderFronPage } from "./renderFrontPage.js";
+import { DataHandler } from "./dataHandler.js";
+import { route } from "./router.js";
 
-function main():void {
-  const body = document.querySelector('body');
+async function init():Promise<void> {
+  try{
+    const body = document.querySelector('body');
+    if (!body) throw new Error("Body not found!");
 
-  if (!body) return;
+    const dataHandler = DataHandler.getInstance();
+    
+    await dataHandler.load()
+    
+    // test if data is loaded
+    const inventory = dataHandler.getInventory();
+    const siteConfig = dataHandler.getSiteConfig();
+    console.log("Inventory:", inventory);
+    console.log("Site Config:", siteConfig);
 
-    console.log("working")
+    route();
+    window.addEventListener("hashchange", route);
+      
+  }
+  catch (error) {
+    console.error("main: Error during initialization:", error);
+  }
 
-    const frontPage: HTMLDivElement = renderFronPage();
-
-    body.appendChild(frontPage);
-  
 }
 
-document.addEventListener("DOMContentLoaded", main);
-
+document.addEventListener("DOMContentLoaded", init);
 
