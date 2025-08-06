@@ -1,16 +1,19 @@
-import { renderNav } from "./renderNav";
+import { renderNav } from "./renderNav.js";
 
 export function renderHeader():HTMLDivElement {
     const header = document.createElement('header') as HTMLDivElement;
-    header.innerHTML = `
-        <div>
 
-            <!-- Placeholder -->
-            fidgineer
+    // Logo
+    const logoWrapper = document.createElement('div');
+    logoWrapper.className = 'header-logo-wrapper';
 
-        </div>
-        ${renderNav()}
-    `;
-    
-    return header as HTMLDivElement;
+    logoWrapper.innerText = "fidgineer"; // Placeholder! TODO: Add logo image
+
+    // Navigation
+    const nav = renderNav(); 
+
+    header.appendChild(logoWrapper);
+    header.appendChild(nav);
+
+    return header;
 }

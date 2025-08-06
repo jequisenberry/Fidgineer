@@ -7,14 +7,18 @@ import { renderSecondaryFeatured } from "./renderSecondaryFeatured";
  *
  * @returns A <div> element containing the full showcase section.
  */
-export function renderCategoryShowcase(): HTMLDivElement {
+export function renderCategoryShowcase(catagory:any): HTMLElement {
     const showcaseContainer = document.createElement('div');
 
+    showcaseContainer.innerText = `${catagory} catagory is working`;
+
+    /*
     const primarySection = renderPrimaryFeatured();
     const secondarySection = renderSecondaryFeatured();
 
     showcaseContainer.appendChild(primarySection);
     showcaseContainer.appendChild(secondarySection);
+    */
 
     return showcaseContainer;
 }

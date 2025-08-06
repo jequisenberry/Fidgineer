@@ -1,6 +1,5 @@
-import { Product } from "../main";
-
-import { renderPrimaryFeatured } from "./subcomponent/renderPrimaryFeatured.js";
+import { DataHandler } from "../data/dataHandler.js";
+import { ProductType } from "../data/types.js";
 import { renderCategoryShowcase } from "./subcomponent/renderCategoryShowcase.js";
 
 /**
@@ -9,32 +8,33 @@ import { renderCategoryShowcase } from "./subcomponent/renderCategoryShowcase.js
  *
  * @returns A <section> element containing all category showcase sections.
  */
-export function renderFeaturedSection(inventory:Product[]):HTMLElement
-{
+export function renderFeaturedSection():HTMLElement {
+    
+    const dataHandler = DataHandler.getInstance();
+    const inventory = dataHandler.getInventory();
 
-    console.log("featured");
-    console.log(inventory);
-    
-    
+
+    const productsCatagory: string[] = Object.values(ProductType);
+
     const featuredSection = document.createElement('section');
+    featuredSection.className = 'featured-section';
 
-    // Create Primary Featured Product
-    const primaryProduct:Product = inventory[0]; // TODO: SET PRIMARY THOUGH JSON CONTROLLER 
+    productsCatagory.forEach(catagory => {
+
+        featuredSection.appendChild(renderCategoryShowcase(catagory));
+    });
     
     
+    
+    //console.log(productsCatagory)
 
-    const primaryFeatured = renderPrimaryFeatured(primaryProduct);
+    //console.log(inventory);
+
     
 
-    // TODO: Iterate through all product categories and call renderCategoryShowcase(category)
-    const categoryShowcase = renderCategoryShowcase(primaryProduct); // Temporary placeholder
-
-    //featuredSection.appendChild(categoryShowcase);
 
 
 
-    featuredSection.appendChild(primaryFeatured);
-    featuredSection.appendChild(categoryShowcase);
 
     return featuredSection;
     

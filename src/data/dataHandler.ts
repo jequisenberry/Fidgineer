@@ -1,4 +1,4 @@
-import { InventoryItem, SiteConfig } from "./components/types.js";
+import { InventoryItem, SiteConfig } from "./types.js";
 
 export class DataHandler {
 

@@ -1,11 +1,8 @@
-import { DataHandler } from "./dataHandler.js";
+import { DataHandler } from "./data/dataHandler.js";
 import { route } from "./router.js";
 
 async function init():Promise<void> {
   try{
-    const body = document.querySelector('body');
-    if (!body) throw new Error("Body not found!");
-
     const dataHandler = DataHandler.getInstance();
     
     await dataHandler.load()

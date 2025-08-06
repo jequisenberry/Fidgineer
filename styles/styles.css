@@ -19,47 +19,91 @@ body {
     font-family: 'DM Sans', 'Courier New', Courier, monospace;
 }
 
+/* Main Container */
 .main-container {
-    
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     min-height: 100svh;
-
+    width: 100%;
     background-color: lightblue;
 }
 
-/* Default Nav Menu */
+/* Header */
+header {
+    display: flex;
+    flex-direction:column;
+
+    border-bottom: .2rem solid var(--color-theme-dark);
+    background: var(--color-theme-light);
+}
+
+.header-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    padding: 1rem;
+
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-theme-dark);
+}
+
+
+/* Nav */
 nav {
-    font-size: 1rem;
-    color: var(--color-theme-text);
+    display: flex;;
+    width: 100%;
+    height: 5rem;
     background: var(--color-theme-light);
 }
 
 nav ul {
-    display: flex;
-    justify-content:center;
+    display: flex;;
+    flex-direction: row;
+    justify-content:space-around;
+    gap: 2.5rem;
+
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
+    
+    font-size: 1rem;
+    font-weight: 900;
     list-style: none;
-    padding: 0;
+    color:  var(--color-theme-dark);
+    text-shadow: .15rem .15rem .1rem rgba(0,0,0,0.20);
 }
 
 nav li {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: .8rem;
-    flex: 0 0 fit-content; 
+    flex: 0 0 fit-content;
+    
+    padding: 0;
 }
 
 nav li a {
-    display: block;
-    padding: .8rem;
+    display: flex;
+    justify-content: center;
+
+    padding: 1rem;
+
+    align-items: center;
     text-decoration: none;
-    font-weight: 700;
-    color: var(--color-theme-text);
-    text-shadow: .15rem .15rem .1rem rgba(0,0,0,0.20);
+    color:  var(--color-theme-dark);
 }
 
 nav li#navSearch {
     display: flex;
-    justify-content: right;
+    flex-direction: column;
+
+    align-items: end;
+    justify-content: center;
     flex: 1 1 auto;
     padding: 0 .8rem;
 }
@@ -72,7 +116,7 @@ nav li#navSearch input {
     font-size: 1rem;
     text-align: right;
     border: none;
-    border-bottom: var(--color-theme-text) .2rem solid;   
+    border-bottom:  var(--color-theme-dark) .2rem solid;   
     background: transparent;
 }
 
@@ -88,7 +132,7 @@ nav li button#navThemeToggle {
     display: flex;
     justify-content: center;
     padding: .8rem;
-    font-size: 1.1rem !important;
+    font-size: 1rem;
     text-shadow: .15rem .15rem .1rem rgba(0,0,0,0.20);
     border: none;
     background: transparent;

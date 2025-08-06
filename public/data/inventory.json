@@ -1,23 +1,452 @@
 [
     {
-        "id":1,
-        "name":"Placeholder Product 1",
-        "price": 19.00,
+        "id": 1,
+        "name": "Placeholder Product 1",
+        "productType": "puzzle",
+        "price": 229.15,
         "description": "This is a placeholder product description.",
-        "imgPath": "placeholder01.png"
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
     },
     {
-        "id":2,
-        "name":"Placeholder Product 2",
-        "price": 133.00,
+        "id": 2,
+        "name": "Placeholder Product 2",
+        "productType": "lighter",
+        "price": 262.71,
         "description": "This is a placeholder product description.",
-        "imgPath": "placeholder02.png"
+        "imgPath": "placeholder02.png",
+        "isFeatured": true
     },
     {
-        "id":3,
-        "name":"Placeholder Product 3",
-        "price": 219.00,
+        "id": 3,
+        "name": "Placeholder Product 3",
+        "productType": "puzzle",
+        "price": 227.9,
         "description": "This is a placeholder product description.",
-        "imgPath": "placeholder03.png"
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 4,
+        "name": "Placeholder Product 4",
+        "productType": "lighter",
+        "price": 223.5,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 5,
+        "name": "Placeholder Product 5",
+        "productType": "lighter",
+        "price": 19.2,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 6,
+        "name": "Placeholder Product 6",
+        "productType": "puzzle",
+        "price": 63.91,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 7,
+        "name": "Placeholder Product 7",
+        "productType": "lighter",
+        "price": 290.16,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 8,
+        "name": "Placeholder Product 8",
+        "productType": "fidget",
+        "price": 156.39,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": true
+    },
+    {
+        "id": 9,
+        "name": "Placeholder Product 9",
+        "productType": "puzzle",
+        "price": 275.95,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 10,
+        "name": "Placeholder Product 10",
+        "productType": "fidget",
+        "price": 220.43,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": true
+    },
+    {
+        "id": 11,
+        "name": "Placeholder Product 11",
+        "productType": "puzzle",
+        "price": 264.39,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 12,
+        "name": "Placeholder Product 12",
+        "productType": "puzzle",
+        "price": 49.82,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": false
+    },
+    {
+        "id": 13,
+        "name": "Placeholder Product 13",
+        "productType": "lighter",
+        "price": 170.76,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 14,
+        "name": "Placeholder Product 14",
+        "productType": "lighter",
+        "price": 173.74,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": true
+    },
+    {
+        "id": 15,
+        "name": "Placeholder Product 15",
+        "productType": "puzzle",
+        "price": 145.81,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": false
+    },
+    {
+        "id": 16,
+        "name": "Placeholder Product 16",
+        "productType": "puzzle",
+        "price": 253.34,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 17,
+        "name": "Placeholder Product 17",
+        "productType": "puzzle",
+        "price": 102.02,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": false
+    },
+    {
+        "id": 18,
+        "name": "Placeholder Product 18",
+        "productType": "puzzle",
+        "price": 22.91,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 19,
+        "name": "Placeholder Product 19",
+        "productType": "lighter",
+        "price": 136.12,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 20,
+        "name": "Placeholder Product 20",
+        "productType": "fidget",
+        "price": 13.94,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 21,
+        "name": "Placeholder Product 21",
+        "productType": "lighter",
+        "price": 183.49,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": false
+    },
+    {
+        "id": 22,
+        "name": "Placeholder Product 22",
+        "productType": "lighter",
+        "price": 190.17,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 23,
+        "name": "Placeholder Product 23",
+        "productType": "fidget",
+        "price": 177.37,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 24,
+        "name": "Placeholder Product 24",
+        "productType": "lighter",
+        "price": 162.84,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 25,
+        "name": "Placeholder Product 25",
+        "productType": "fidget",
+        "price": 278.07,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": true
+    },
+    {
+        "id": 26,
+        "name": "Placeholder Product 26",
+        "productType": "fidget",
+        "price": 55.39,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 27,
+        "name": "Placeholder Product 27",
+        "productType": "lighter",
+        "price": 179.87,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 28,
+        "name": "Placeholder Product 28",
+        "productType": "fidget",
+        "price": 284.64,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 29,
+        "name": "Placeholder Product 29",
+        "productType": "lighter",
+        "price": 137.48,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 30,
+        "name": "Placeholder Product 30",
+        "productType": "lighter",
+        "price": 93.15,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": false
+    },
+    {
+        "id": 31,
+        "name": "Placeholder Product 31",
+        "productType": "fidget",
+        "price": 78.49,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 32,
+        "name": "Placeholder Product 32",
+        "productType": "puzzle",
+        "price": 122.08,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 33,
+        "name": "Placeholder Product 33",
+        "productType": "fidget",
+        "price": 162.72,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 34,
+        "name": "Placeholder Product 34",
+        "productType": "puzzle",
+        "price": 56.33,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 35,
+        "name": "Placeholder Product 35",
+        "productType": "puzzle",
+        "price": 188.83,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 36,
+        "name": "Placeholder Product 36",
+        "productType": "lighter",
+        "price": 281.42,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": false
+    },
+    {
+        "id": 37,
+        "name": "Placeholder Product 37",
+        "productType": "lighter",
+        "price": 275.96,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": true
+    },
+    {
+        "id": 38,
+        "name": "Placeholder Product 38",
+        "productType": "puzzle",
+        "price": 215.4,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": false
+    },
+    {
+        "id": 39,
+        "name": "Placeholder Product 39",
+        "productType": "puzzle",
+        "price": 35.87,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 40,
+        "name": "Placeholder Product 40",
+        "productType": "lighter",
+        "price": 88.44,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": false
+    },
+    {
+        "id": 41,
+        "name": "Placeholder Product 41",
+        "productType": "fidget",
+        "price": 78.14,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 42,
+        "name": "Placeholder Product 42",
+        "productType": "puzzle",
+        "price": 133.57,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": false
+    },
+    {
+        "id": 43,
+        "name": "Placeholder Product 43",
+        "productType": "fidget",
+        "price": 137.66,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 44,
+        "name": "Placeholder Product 44",
+        "productType": "puzzle",
+        "price": 180.66,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 45,
+        "name": "Placeholder Product 45",
+        "productType": "puzzle",
+        "price": 15.17,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 46,
+        "name": "Placeholder Product 46",
+        "productType": "fidget",
+        "price": 127.03,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 47,
+        "name": "Placeholder Product 47",
+        "productType": "fidget",
+        "price": 15.94,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder03.png",
+        "isFeatured": false
+    },
+    {
+        "id": 48,
+        "name": "Placeholder Product 48",
+        "productType": "puzzle",
+        "price": 28.69,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 49,
+        "name": "Placeholder Product 49",
+        "productType": "fidget",
+        "price": 24.81,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder01.png",
+        "isFeatured": false
+    },
+    {
+        "id": 50,
+        "name": "Placeholder Product 50",
+        "productType": "puzzle",
+        "price": 213.22,
+        "description": "This is a placeholder product description.",
+        "imgPath": "placeholder02.png",
+        "isFeatured": false
     }
 ]

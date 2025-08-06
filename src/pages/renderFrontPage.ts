@@ -1,26 +1,20 @@
 
-import { renderNav } from "../components/renderNav.js";
+
+import { appendBody } from "../utils/dom.js";
+
+import { renderHeader } from "../components/renderHeader.js";
 import { renderFeaturedSection } from "../components/renderFeaturedSection.js";
 
-export function renderFrontPage(): HTMLDivElement {
+export function renderFrontPage(): void {
     
-    // console.log(inventory);
-    
-    
-    const frontPage = document.createElement('div');
-    
-    /*
-    frontPage.classList.add("main-container");
+    console.log("main page working");
+        
+    const header = renderHeader();
+    const featuredSection = renderFeaturedSection();
 
-    const navBar:HTMLElement = renderNav()
-    navBar.classList.add("front-page-nav");
-    
-    const featured = renderFeaturedSection(inventory);
+    const elements: HTMLElement[] = [header,featuredSection]
 
 
-    frontPage.appendChild(navBar);
-    frontPage.appendChild(featured);
-    */
-
-return frontPage;
+    appendBody(elements);
+    
 }
