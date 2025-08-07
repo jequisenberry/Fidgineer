@@ -4,9 +4,9 @@
  *
  * @returns A <div> element containing the full showcase section.
  */
-export function renderCategoryShowcase(catagory) {
+export function renderCategoryShowcase(category) {
     const showcaseContainer = document.createElement('div');
-    showcaseContainer.innerText = `${catagory} catagory is working`;
+    //showcaseContainer.innerText = `${catagory} catagory is working`;
     /*
     const primarySection = renderPrimaryFeatured();
     const secondarySection = renderSecondaryFeatured();

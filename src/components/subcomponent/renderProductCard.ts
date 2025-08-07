@@ -1,35 +1,47 @@
+import {InventoryItem } from "../../data/types.js";
+
+
 /**
  * Creates a product card element.
  * Includes a placeholder name, price, and an add-to-cart section.
  *
  * @returns A <div> element representing a product card.
  */
-export function renderProductCard(): HTMLDivElement {
-    const cardContainer = document.createElement('div');
+export function renderProductCard(item: InventoryItem): HTMLElement {
+    
+    const cardContainer: HTMLElement = document.createElement('div');
 
-    // Content wrapper
-    const content = document.createElement('div');
-
+    // Card Content
+    const cardWrapper: HTMLElement = document.createElement('div');
+    
     // Product details section: name and price
-    const productDetails = document.createElement('div');
+    const productDetails: HTMLElement = document.createElement('div');
 
-    const productName = document.createElement('span');
-    productName.textContent = 'Product Name'; // Placeholder
-
-    const productPrice = document.createElement('span');
-    productPrice.textContent = '$0.00'; // Placeholder
-
+    // Product Name
+    const productName: HTMLSpanElement = document.createElement('span');
+    productName.textContent = item.name;
+    
+    // Product Price
+    const productPrice: HTMLSpanElement = document.createElement('span');
+    productPrice.textContent = item.price.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+    
+    // Add-to-cart section (functionality to be added later)
+    const addCart: HTMLElement = document.createElement('div');
+    addCart.textContent = 'Add to Cart'; // Placeholder text for visual cue
+    
+    // Append to details
     productDetails.appendChild(productName);
     productDetails.appendChild(productPrice);
+    
+    // Append to card wrappers
+    cardWrapper.appendChild(productDetails)
+    cardWrapper.appendChild(addCart);
 
-    // Add-to-cart section (functionality to be added later)
-    const addCart = document.createElement('div');
-    addCart.textContent = 'Add to Cart'; // Placeholder text for visual cue
+    // Append to containers
+    cardContainer.appendChild(cardWrapper);
 
-    // Assemble card
-    content.appendChild(productDetails);
-    content.appendChild(addCart);
-    cardContainer.appendChild(content);
-
-    return cardContainer as HTMLDivElement;
+    return cardContainer;
 }
