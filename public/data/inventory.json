@@ -114,7 +114,7 @@
         "price": 170.76,
         "description": "This is a placeholder product description.",
         "imgPath": "placeholder01.png",
-        "isFeatured": false
+        "isFeatured": true
     },
     {
         "id": 14,

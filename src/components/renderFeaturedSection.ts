@@ -1,109 +1,148 @@
 import { DataHandler } from "../data/dataHandler.js";
-import { ProductType, InventoryItem } from "../data/types.js";
+import { ProductType, CategoryInfo, InventoryItem } from "../data/types.js";
 
 import { renderProductCard } from "./subcomponent/renderProductCard.js";
 import { renderCTAButton } from "./subcomponent/renderCTAButton.js";
 
+
 /**
  * Renders the featured product section.
- * Iterates through all categories and renders their respective showcases.
+ * Iterates through all product types and renders their respective showcases.
  *
- * @returns A <section> element containing all category showcase sections.
+ * @returns The <section> element containing all category showcase sections.
  */
-export function renderFeaturedSection():HTMLElement {
-    
-    const dataHandler = DataHandler.getInstance();
-    const inventory = dataHandler.getInventory();
+export function renderFeaturedSection(): HTMLElementTagNameMap['section'] {
+    const featureSectionContainer = document.createElement('section');
+    featureSectionContainer.className = 'featured-section';
 
-    const featuredSection = document.createElement('section');
-    featuredSection.className = 'featured-section';
-
-    Object.values(ProductType).forEach(product => {
-
-        const category: InventoryItem[] = inventory
-            .filter(item => item.productType === product && item.isFeatured);
-        
-        featuredSection.appendChild(renderCategoryShowcase(category));
-    
+    // Iterate through product types, creating a product showcase for each.
+    Object.values(ProductType).forEach((product: ProductType) => {
+        featureSectionContainer.appendChild(renderCategoryShowcase(product));
     });
 
-    return featuredSection;
-    
+    return featureSectionContainer;
 }
-
 
 /**
  * Renders the complete product showcase for a category,
  * including both primary and secondary featured products.
  *
+ * @param {ProductType} productType - The product category to render.
  * @returns A <div> element containing the full showcase section.
  */
-function renderCategoryShowcase(category: InventoryItem[]): HTMLElement {
+function renderCategoryShowcase(productType: ProductType): HTMLElement {
     
-    const showcaseContainer:HTMLElement = document.createElement('div');
+    // Get inventory and site configuration data
+    const dataHandler = DataHandler.getInstance();
+    const inventory = dataHandler.getInventory();
 
-    // Highlighted Feature
-    // Pick Random Highlight from featured
-    const randomIndex:number = Math.floor(Math.random() * category.length) ;
-    const randomHighlight:InventoryItem = category[randomIndex];
+    // Filter for all featured products in this category
+    const featuredProducts: InventoryItem[] = inventory.filter(
+        item => item.productType === productType && item.isFeatured
+    );
 
-    console.log(category)
+    // Guard: No featured products
+    if (featuredProducts.length === 0) {
+        console.warn(`No featured products found for category: ${productType}`);
+        return document.createElement('div'); // or a placeholder element
+    }
 
-    // Featured Cards
-    const cardContainer:HTMLElement = document.createElement('div')
-    category.forEach(item => {
-        if (item.id != randomHighlight.id)
+    // Select a random product for the highlight section
+    const randomIndex = Math.floor(Math.random() * featuredProducts.length);
+    const highlightedProduct = featuredProducts[randomIndex];
+
+    // Create showcase container
+    const showcaseContainer = document.createElement('div');
+    showcaseContainer.className = "showcase-container";
+
+    // Create container for secondary featured product cards
+    const cardContainer = document.createElement('div');
+    cardContainer.className = "featured-card-container";
+
+    // Add all featured products except the highlighted one
+    featuredProducts.forEach(item => {
+        if (item.id !== highlightedProduct.id) {
             cardContainer.appendChild(renderProductCard(item));
-    })
+        }
+    });
 
-
-    showcaseContainer.appendChild(renderPrimaryFeatured(randomHighlight));
-    showcaseContainer.appendChild(cardContainer)
+    // Assemble the showcase section
+    showcaseContainer.appendChild(renderPrimaryFeatured(productType, highlightedProduct));
+    showcaseContainer.appendChild(cardContainer);
+    showcaseContainer.appendChild(renderCTAButton("Show More", "/"));
 
     return showcaseContainer;
 }
-
 
 /**
  * Creates the main product showcase.
  * Displays a product image, title, description, and a CTA button.
  *  
- * @param primaryProduct - The product to showcase.
+ * @param {ProductType} productType - The product category to render.
+ * @param {InventoryItem} item - The featured product to showcase.
  * @returns A <div> element containing the product showcase.
  */
-export function renderPrimaryFeatured(item:InventoryItem): HTMLElement {
+export function renderPrimaryFeatured(
+    productType: ProductType,
+    item: InventoryItem
+): HTMLElement {
+
+    // Get site configuration data
+    const dataHandler = DataHandler.getInstance();
+    const siteConfig = dataHandler.getSiteConfig();
+
+    // Get category info from site config
+    const categoryInfo:CategoryInfo | undefined = siteConfig.categoryInfo.find(
+        category => category.ProductType === productType
+    );
 
     const primaryContainer = document.createElement('div');
-    
-    // Create and append the image
-    const featuredImg:HTMLImageElement = document.createElement('img');
+    primaryContainer.className = "primary-showcase";
+
+    // Product image
+    const featuredImg = document.createElement('img');
     featuredImg.src = `public/images/${item.imgPath}`;
-    featuredImg.alt = 'placeholder';
-    
-    // Create content wrapper
+    featuredImg.alt = item.name;
+
+    // Content wrapper
     const featuredContent = document.createElement('div');
+    featuredContent.className = "primary-showcase-content";
 
-    // Content Elements
-    const productName = document.createElement('h3');
+    if (categoryInfo) {
+        const categoryName = document.createElement('h3');
+        categoryName.textContent = categoryInfo.ProductType;
+
+        const categoryDescription = document.createElement('p');
+        categoryDescription.className = "category-description";
+        categoryDescription.textContent = categoryInfo.description;
+
+        const dividerLine = document.createElement('div');
+        dividerLine.className = "divider-line";
+
+        featuredContent.appendChild(categoryName);
+        featuredContent.appendChild(categoryDescription);
+        featuredContent.appendChild(dividerLine);
+    } else {
+        console.warn("Category information not found for:", item.productType);
+    }
+
+    // Product details
+    const productName = document.createElement('h4');
     productName.textContent = item.name;
-
-    const spacer = document.createElement('div');
 
     const paragraph = document.createElement('p');
     paragraph.textContent = item.description;
-    
+
     const button = renderCTAButton('Shop Now', '/');
 
-
-    // Append everything in order
+    // Append product details
     featuredContent.appendChild(productName);
-    featuredContent.appendChild(spacer);
     featuredContent.appendChild(paragraph);
     featuredContent.appendChild(button);
-    
-    // Append content to the container
+
+    // Assemble showcase
     primaryContainer.appendChild(featuredImg);
     primaryContainer.appendChild(featuredContent);
-    
+
     return primaryContainer;
 }

@@ -4,73 +4,107 @@ import { renderProductCard } from "./subcomponent/renderProductCard.js";
 import { renderCTAButton } from "./subcomponent/renderCTAButton.js";
 /**
  * Renders the featured product section.
- * Iterates through all categories and renders their respective showcases.
+ * Iterates through all product types and renders their respective showcases.
  *
- * @returns A <section> element containing all category showcase sections.
+ * @returns The <section> element containing all category showcase sections.
  */
 export function renderFeaturedSection() {
-    const dataHandler = DataHandler.getInstance();
-    const inventory = dataHandler.getInventory();
-    const featuredSection = document.createElement('section');
-    featuredSection.className = 'featured-section';
-    Object.values(ProductType).forEach(product => {
-        const category = inventory
-            .filter(item => item.productType === product && item.isFeatured);
-        featuredSection.appendChild(renderCategoryShowcase(category));
+    const featureSectionContainer = document.createElement('section');
+    featureSectionContainer.className = 'featured-section';
+    // Iterate through product types, creating a product showcase for each.
+    Object.values(ProductType).forEach((product) => {
+        featureSectionContainer.appendChild(renderCategoryShowcase(product));
     });
-    return featuredSection;
+    return featureSectionContainer;
 }
 /**
  * Renders the complete product showcase for a category,
  * including both primary and secondary featured products.
  *
+ * @param {ProductType} productType - The product category to render.
  * @returns A <div> element containing the full showcase section.
  */
-function renderCategoryShowcase(category) {
+function renderCategoryShowcase(productType) {
+    // Get inventory and site configuration data
+    const dataHandler = DataHandler.getInstance();
+    const inventory = dataHandler.getInventory();
+    // Filter for all featured products in this category
+    const featuredProducts = inventory.filter(item => item.productType === productType && item.isFeatured);
+    // Guard: No featured products
+    if (featuredProducts.length === 0) {
+        console.warn(`No featured products found for category: ${productType}`);
+        return document.createElement('div'); // or a placeholder element
+    }
+    // Select a random product for the highlight section
+    const randomIndex = Math.floor(Math.random() * featuredProducts.length);
+    const highlightedProduct = featuredProducts[randomIndex];
+    // Create showcase container
     const showcaseContainer = document.createElement('div');
-    // Highlighted Feature
-    // Pick Random Highlight from featured
-    const randomIndex = Math.floor(Math.random() * category.length);
-    const randomHighlight = category[randomIndex];
-    console.log(category);
-    // Featured Cards
+    showcaseContainer.className = "showcase-container";
+    // Create container for secondary featured product cards
     const cardContainer = document.createElement('div');
-    category.forEach(item => {
-        if (item.id != randomHighlight.id)
+    cardContainer.className = "featured-card-container";
+    // Add all featured products except the highlighted one
+    featuredProducts.forEach(item => {
+        if (item.id !== highlightedProduct.id) {
             cardContainer.appendChild(renderProductCard(item));
+        }
     });
-    showcaseContainer.appendChild(renderPrimaryFeatured(randomHighlight));
+    // Assemble the showcase section
+    showcaseContainer.appendChild(renderPrimaryFeatured(productType, highlightedProduct));
     showcaseContainer.appendChild(cardContainer);
+    showcaseContainer.appendChild(renderCTAButton("Show More", "/"));
     return showcaseContainer;
 }
 /**
  * Creates the main product showcase.
  * Displays a product image, title, description, and a CTA button.
  *
- * @param primaryProduct - The product to showcase.
+ * @param {ProductType} productType - The product category to render.
+ * @param {InventoryItem} item - The featured product to showcase.
  * @returns A <div> element containing the product showcase.
  */
-export function renderPrimaryFeatured(item) {
+export function renderPrimaryFeatured(productType, item) {
+    // Get site configuration data
+    const dataHandler = DataHandler.getInstance();
+    const siteConfig = dataHandler.getSiteConfig();
+    // Get category info from site config
+    const categoryInfo = siteConfig.categoryInfo.find(category => category.ProductType === productType);
     const primaryContainer = document.createElement('div');
-    // Create and append the image
+    primaryContainer.className = "primary-showcase";
+    // Product image
     const featuredImg = document.createElement('img');
     featuredImg.src = `public/images/${item.imgPath}`;
-    featuredImg.alt = 'placeholder';
-    // Create content wrapper
+    featuredImg.alt = item.name;
+    // Content wrapper
     const featuredContent = document.createElement('div');
-    // Content Elements
-    const productName = document.createElement('h3');
+    featuredContent.className = "primary-showcase-content";
+    if (categoryInfo) {
+        const categoryName = document.createElement('h3');
+        categoryName.textContent = categoryInfo.ProductType;
+        const categoryDescription = document.createElement('p');
+        categoryDescription.className = "category-description";
+        categoryDescription.textContent = categoryInfo.description;
+        const dividerLine = document.createElement('div');
+        dividerLine.className = "divider-line";
+        featuredContent.appendChild(categoryName);
+        featuredContent.appendChild(categoryDescription);
+        featuredContent.appendChild(dividerLine);
+    }
+    else {
+        console.warn("Category information not found for:", item.productType);
+    }
+    // Product details
+    const productName = document.createElement('h4');
     productName.textContent = item.name;
-    const spacer = document.createElement('div');
     const paragraph = document.createElement('p');
     paragraph.textContent = item.description;
     const button = renderCTAButton('Shop Now', '/');
-    // Append everything in order
+    // Append product details
     featuredContent.appendChild(productName);
-    featuredContent.appendChild(spacer);
     featuredContent.appendChild(paragraph);
     featuredContent.appendChild(button);
-    // Append content to the container
+    // Assemble showcase
     primaryContainer.appendChild(featuredImg);
     primaryContainer.appendChild(featuredContent);
     return primaryContainer;

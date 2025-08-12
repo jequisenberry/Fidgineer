@@ -1,3 +1,109 @@
 {
-    "name": "Fidgineer"
+    "name": "Fidgineer",
+    "categoryInfo": [
+        {
+            "ProductType":"Fidget Toy",
+            "description":"FidgetToy placeholder..."
+        },
+        {
+            "ProductType":"Puzzle",
+            "description":"Puzzle placeholder..."
+        },
+        {
+            "ProductType":"Lighter",
+            "description":"Lighter placholder...."
+        }
+    ],
+
+    "footerLinks":[
+        {
+            "categoryName":"Customer Care",
+            "contents":[
+                {
+                    "linkName":"CareEmail",
+                    "href":"info@fidgineer",
+                    "active":true
+                },
+                {
+                    "linkName":"Keep in touch",
+                    "href":"/",
+                    "active":true
+                }
+            ]
+        },
+        {
+            "categoryName":"About Us",
+            "contents":[
+                {
+                    "linkName":"About Fidgineer",
+                    "href":"/",
+                    "active":true
+                }
+            ]
+        },
+        {
+            "categoryName":"Support",
+            "contents":[
+                {
+                    "linkName":"Shipping & Returns",
+                    "href":"/",
+                    "active":true
+                },
+                {
+                    "linkName":"Size Guide",
+                    "href":"/",
+                    "active":true
+                },
+                {
+                    "linkName":"Contact",
+                    "href":"/",
+                    "active":true
+                },
+                {
+                    "linkName":"Gift Card",
+                    "href":"/",
+                    "active":true
+                }
+            ]
+        },
+        {
+            "categoryName":"Legal Terms",
+            "contents":[
+                {
+                    "linkName":"Privacy Policy",
+                    "href":"/",
+                    "active":true
+                },
+                {
+                    "linkName":"Terms & Conditions",
+                    "href":"/",
+                    "active":true
+                }
+            ]
+        },
+        {
+            "categoryName":"Connect",
+            "contents":[
+                {
+                    "linkName":"Instagram",
+                    "href":"/",
+                    "active":true
+                },
+                {
+                    "linkName":"X",
+                    "href":"/",
+                    "active":true
+                },
+                {
+                    "linkName":"Press",
+                    "href":"/",
+                    "active":true
+                }
+            ]
+        }
+
+
+    ] 
+        
+
 }

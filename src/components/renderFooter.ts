@@ -1,3 +1,6 @@
+import { DataHandler } from "../data/dataHandler.js";
+import { Contents } from "../data/types.js";
+
 /**
  * Renders the site footer.
  * Includes site information, customer care links, copyright,
@@ -6,32 +9,102 @@
  * @returns A <footer> element representing the site footer.
  */
 export function renderFooter(): HTMLElement {
-    const footer = document.createElement('footer');
 
-    // Site information and contact section
-    const siteInfo = document.createElement('div');
+    const dataHandler = DataHandler.getInstance();
+    const siteConfig = dataHandler.getSiteConfig();
 
-    const customerCare = document.createElement('div');
-    // TODO: Map customer care info here
+    const footer: HTMLElement = document.createElement('footer');
 
-    const siteLinks = document.createElement('div');
-    // TODO: Map site link sections and links here
+    const linksList: HTMLUListElement = document.createElement('ul');
+    linksList.className = "footer-links-list"
 
-    siteInfo.appendChild(customerCare);
-    siteInfo.appendChild(siteLinks);
+    //console.log(siteConfig.FooterLinks)
+    siteConfig.footerLinks.forEach(linkCategory => {
 
-    // Copyright
-    const copyright = document.createElement('div');
-    // TODO: Add copyright text
+        const category:HTMLLIElement = document.createElement('li');
+        category.className = "category-li"
+        
+        const categoryHeader:HTMLHeadingElement = document.createElement('h5');
+        categoryHeader.innerText = linkCategory.categoryName;
+        category.appendChild(categoryHeader); 
+
+        const contentsList: HTMLUListElement = document.createElement('ul');
+
+        if (linkCategory.categoryName == "Customer Care") {
+            category.classList.add("customer-care-li");
+            
+            const customerCare: Contents | undefined = linkCategory.contents.find(item => item.linkName == "CareEmail");
+            const keepInTouch: Contents | undefined = linkCategory.contents.find(item => item.linkName == "CareEmail");
+
+            const careUl: HTMLUListElement = document.createElement('ul');
+            careUl.classList = "care-ul"
+            if (customerCare) {
+                const emailLi:HTMLLIElement = document.createElement('li');
+                const emailLink:HTMLAnchorElement = document.createElement('a');            
+                emailLink.textContent   = customerCare.href;
+                emailLink.href          = customerCare.href
+
+                emailLi.appendChild(emailLink);
+                careUl.appendChild(emailLi);
+            }
+
+            if (keepInTouch) {
+                const keepInTouchLi:HTMLLIElement = document.createElement('li');
+                keepInTouchLi.innerText = keepInTouch.linkName
+
+                const keepInTouchp:HTMLParagraphElement = document.createElement('p');
+                keepInTouchp.textContent = "Sign up to our newsletter to stay up to date with our latest releases, preorders and content.";
+
+                const keepInTouchLink:HTMLAnchorElement = document.createElement('a');            
+                keepInTouchLink.textContent   = "Enter your email";
+                keepInTouchLink.href          = keepInTouch.href;
+
+                keepInTouchp.appendChild(keepInTouchLink);
+                keepInTouchLi.appendChild(keepInTouchp);
+                careUl.appendChild(keepInTouchLi);
+            }
+
+            category.appendChild(careUl);
+        
+        }
+        else {
+
+            linkCategory.contents.forEach(link => {
+                
+                if (!link.active) return;
+
+                const li:HTMLLIElement = document.createElement('li');            
+                const a:HTMLAnchorElement = document.createElement('a');
+                
+                link.linkName == "CareEmail"
+                a.textContent = link.linkName
+                a.href = link.href
+                
+                li.append(a);
+                contentsList.appendChild(li);
+                category.appendChild(contentsList);
+
+            });
+
+        }
+        
+        linksList.appendChild(category);
+    })
 
     // Footer branding bar
-    const footerBar = document.createElement('div');
-    // TODO: Add Fidgineer logo or branding here
+    const footerCopyRight = document.createElement('div');
+    footerCopyRight.className = 'footer-copyright';
+    footerCopyRight.innerText = "©2025 Fidgineer Co"; // Placeholder! TODO: Add logo image
+    
+    // Footer branding bar
+    const footerLogo = document.createElement('div');
+    footerLogo.className = 'footer-logo';
+    footerLogo.innerText = "fidgineer"; // Placeholder! TODO: Add logo image
 
     // Assemble footer
-    footer.appendChild(siteInfo);
-    footer.appendChild(copyright);
-    footer.appendChild(footerBar);
+    footer.appendChild(linksList);
+    footer.appendChild(footerCopyRight);
+    footer.appendChild(footerLogo);
 
     return footer;
 }

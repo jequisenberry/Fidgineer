@@ -8,6 +8,7 @@
  */
 export function renderCTAButton(buttonText, href) {
     const a = document.createElement('a');
+    a.classList = "cta-button";
     a.innerText = buttonText;
     a.setAttribute('href', href);
     a.setAttribute('target', '_blank');

@@ -1,34 +1,44 @@
 /**
  * Creates a product card element.
- * Includes a placeholder name, price, and an add-to-cart section.
+ * Displays the product image, name, price, and (optionally) an add-to-cart section.
  *
+ * @param {InventoryItem} item - The product data to display in the card.
  * @returns A <div> element representing a product card.
  */
 export function renderProductCard(item) {
     const cardContainer = document.createElement('div');
-    // Card Content
+    cardContainer.className = "card-container";
+    // Image
+    const cardImage = document.createElement('img');
+    cardImage.src = `./public/images/${item.imgPath}`; // Adjust path based on setup
+    cardImage.alt = item.name;
+    // Card wrapper
     const cardWrapper = document.createElement('div');
-    // Product details section: name and price
+    cardWrapper.className = "card-wrapper";
+    // Product details section
     const productDetails = document.createElement('div');
-    // Product Name
+    productDetails.className = "card-details";
     const productName = document.createElement('span');
+    productName.className = "product-name";
     productName.textContent = item.name;
-    // Product Price
     const productPrice = document.createElement('span');
+    productPrice.className = "product-price";
     productPrice.textContent = item.price.toLocaleString('en-US', {
         style: 'currency',
         currency: 'USD'
     });
-    // Add-to-cart section (functionality to be added later)
+    // Add-to-cart placeholder (functionality to be implemented later)
     const addCart = document.createElement('div');
-    addCart.textContent = 'Add to Cart'; // Placeholder text for visual cue
-    // Append to details
+    addCart.className = "add-to-cart";
+    addCart.textContent = 'Add to Cart';
+    // Append details
     productDetails.appendChild(productName);
     productDetails.appendChild(productPrice);
-    // Append to card wrappers
+    // Append to wrapper
     cardWrapper.appendChild(productDetails);
-    cardWrapper.appendChild(addCart);
-    // Append to containers
+    // cardWrapper.appendChild(addCart); // Uncomment when functional
+    // Append to container
+    cardContainer.appendChild(cardImage);
     cardContainer.appendChild(cardWrapper);
     return cardContainer;
 }
