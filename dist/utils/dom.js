@@ -1,31 +1,50 @@
+import { renderHeader } from "src/components/renderHeader";
+import { renderFooter } from "src/components/renderFooter";
+export var PageCommpent;
+(function (PageCommpent) {
+    PageCommpent["MainContainer"] = "main-container";
+    PageCommpent["Header"] = "header";
+    PageCommpent["Main"] = "main";
+    PageCommpent["Footer"] = "footer";
+})(PageCommpent || (PageCommpent = {}));
 /**
- * Appends a list of HTMLElement nodes to the document body, wrapped inside a container div.
  *
- * @param {HTMLElement[]} pageContents - An array of elements to be appended inside the container.
- * @param {Object} [options] - Optional settings for customizing the container and behavior.
- * @param {string} [options.id] - Optional ID to assign to the container div.
- * @param {string} [options.className] - Optional additional class to add to the container div.
- * @param {boolean} [options.clear=false] - Whether to clear the document body before appending.
- *
- * @throws {Error} If the document body cannot be found.
- *
- * @example
- * const heading = document.createElement('h1');
- * heading.textContent = "Hello!";
- * appendBody([heading], { id: "main", className: "page", clear: true });
+ * @param componentClasses
+ * @param mainContents
+ * @param clear
  */
-export function appendBody(pageContents, options) {
-    const body = document.querySelector('body');
+export function renderPage(componentClasses, mainContents, clear = true) {
+    const body = document.querySelector("body");
     if (!body)
-        throw new Error("appendBody: body not found");
-    if (options === null || options === void 0 ? void 0 : options.clear)
-        body.innerHTML = '';
-    const mainContainer = document.createElement('div');
-    mainContainer.className = 'main-container';
-    if (options === null || options === void 0 ? void 0 : options.id)
-        mainContainer.id = options.id;
-    if (options === null || options === void 0 ? void 0 : options.className)
-        mainContainer.classList.add(options.className);
-    pageContents.forEach(element => mainContainer.appendChild(element));
+        throw new Error("renderPage: body not found");
+    if (clear)
+        body.innerHTML = "";
+    // Main container
+    const mainContainer = document.createElement("div");
+    mainContainer.className = PageCommpent.MainContainer;
+    componentClasses &&
+        addComponentClasses(componentClasses, PageCommpent.MainContainer, mainContainer);
+    // Header
+    const header = renderHeader();
+    componentClasses &&
+        addComponentClasses(componentClasses, PageCommpent.Header, header);
+    // Main
+    const main = document.createElement("main");
+    componentClasses &&
+        addComponentClasses(componentClasses, PageCommpent.Main, main);
+    mainContents === null || mainContents === void 0 ? void 0 : mainContents.forEach(el => main.appendChild(el));
+    // Footer
+    const footer = renderFooter();
+    componentClasses &&
+        addComponentClasses(componentClasses, PageCommpent.Footer, footer);
+    // Assemble
+    mainContainer.append(header, main, footer);
     body.appendChild(mainContainer);
+}
+function addComponentClasses(componentClasses, pageComponentName, docElement) {
+    var _a;
+    const match = componentClasses.find(c => c.componentName === pageComponentName);
+    if ((_a = match === null || match === void 0 ? void 0 : match.classNames) === null || _a === void 0 ? void 0 : _a.length) {
+        docElement.classList.add(...match.classNames);
+    }
 }
