@@ -1,6 +1,6 @@
 
-import { renderHeader } from "../components/renderHeader.js";
-import { renderFooter } from "../components/renderFooter.js";
+import { renderHeader } from "../components/header/renderHeader.js";
+import { renderFooter } from "../components/footer/renderFooter.js";
 
 /**
  * Represents a single CSS class name object.
@@ -59,7 +59,7 @@ export type Options = {
  *   mainContents: [featuredSection]
  * });
  */
-export function renderPage(options?: Options, clear: boolean = true): void {
+function renderPage(options?: Options, clear: boolean = true): void {
     
     const body = document.querySelector("body") as HTMLBodyElement;
     if (!body) throw new Error("renderPage: body not found");

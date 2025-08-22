@@ -1,4 +1,4 @@
-import { DataHandler } from "./data/dataHandler.js";
+import { DataHandler } from "./utils/dataHandler.js";
 import { route } from "./router.js";
 async function init() {
     try {
@@ -16,4 +16,5 @@ async function init() {
         console.error("main: Error during initialization:", error);
     }
 }
+console.log('working');
 document.addEventListener("DOMContentLoaded", init);

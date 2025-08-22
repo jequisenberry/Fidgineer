@@ -76,6 +76,7 @@ nav {
 }
 
 nav ul {
+    position: relative;
     display: flex;;
     flex-direction: row;
     justify-content:space-around;
@@ -142,16 +143,37 @@ nav li#navSearch input:focus {
     background: transparent;
 }
 
-nav li button#navThemeToggle {
+#navThemeToggle {
+    position: absolute;
+    inset: .5rem .5rem auto auto;
     cursor: pointer;
-    display: flex;
+    display: block;
     justify-content: center;
     padding: .8rem;
     font-size: 1rem;
     text-shadow: .15rem .15rem .1rem rgba(0,0,0,0.20);
     border: none;
     background: transparent;
+
+    border: 1px solid #000;
 }
+
+/* Nav: drop down */
+.menu-dropdown {
+    position: absolute;
+    inset: 100% 0 auto 0;
+
+    display: none;
+    
+    border: 1px solid #000;
+    background: white;
+}
+
+.menu-dropdown-open {
+    display: block !important;
+}
+
+
 
 /* Main */
 main {

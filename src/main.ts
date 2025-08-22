@@ -1,4 +1,4 @@
-import { DataHandler } from "./data/dataHandler.js";
+import { DataHandler } from "./utils/dataHandler.js";
 import { route } from "./router.js";
 
 async function init():Promise<void> {
@@ -22,6 +22,8 @@ async function init():Promise<void> {
   }
 
 }
+
+console.log('working')
 
 document.addEventListener("DOMContentLoaded", init);
 

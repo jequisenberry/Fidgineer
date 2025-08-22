@@ -1,15 +1,14 @@
-import { renderFeaturedSection } from "../components/featured_section/renderFeaturedSection.js";
-
-import { DataHandler } from "../utils/dataHandler.js";
-
 import { pageBuilder } from "../utils/pageBuilder.js";
 import { renderHeader } from "../components/header/renderHeader.js";
 import { renderFooter } from "../components/footer/renderFooter.js";
 
-export function renderFrontPage(): void {
+import { renderProductsByCategory } from "../components/products_page/renderProductsByCategory.js";
+
+
+export function renderProductsPage(): void {
     
-    console.log("main page working");
-   
+    console.log("product page working");
+
     // Main Content
     pageBuilder({
     header: {
@@ -17,7 +16,7 @@ export function renderFrontPage(): void {
         classes: ['header-class'] // optional
     },
     main: {
-        contents: [renderFeaturedSection()],
+        contents: [renderProductsByCategory()],
         classes: ['main-class'] // optional
     },
     footer: {
@@ -28,6 +27,4 @@ export function renderFrontPage(): void {
         classes: ['container-class'] // optional
     }
     });
-    
 }
-

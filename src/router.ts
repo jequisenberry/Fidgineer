@@ -1,14 +1,30 @@
 import { renderFrontPage } from "./pages/renderFrontPage.js";
+import { renderProductsPage } from "./pages/renderProductsPage.js";
+
 
 export function route() {
     const hash = window.location.hash.slice(1);
 
     switch (hash) {
-        // Add more routes as needed
-    
+        
+        /*
+        case 'products':
+            renderProductsPage();
+            break;
+        */
+        
+        /*
+        case 'product':
+            const productId = getProductIdFromHash(); // helper function
+            renderProductPage(productId); // Shows single product details
+            break;
+        */
+
+        
         case 'home':
         default:
-        renderFrontPage();
-    }
-
+            renderFrontPage();
+            break;
+        
+   }
 }

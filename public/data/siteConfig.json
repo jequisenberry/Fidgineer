@@ -1,17 +1,24 @@
 {
     "name": "Fidgineer",
-    "categoryInfo": [
+
+    "productCategories": [
         {
-            "ProductType":"Fidget Toy",
-            "description":"FidgetToy placeholder..."
+            "id":"Fidget Toy", 
+            "name":"Fidget Toys",
+            "description":"Fidget Toy placeholder...",
+            "featuredIds":[8,10, 20]
         },
         {
-            "ProductType":"Puzzle",
-            "description":"Puzzle placeholder..."
+            "id":"Puzzle", 
+            "name":"Puzzles",
+            "description":"Puzzle placeholder...",
+            "featuredIds":[1,3]
         },
         {
-            "ProductType":"Lighter",
-            "description":"Lighter placholder...."
+            "id":"Lighter", 
+            "name":"Trick Lighters",
+            "description":"Lighter placholder....",
+            "featuredIds":[2,13]
         }
     ],
 
@@ -105,5 +112,4 @@
 
     ] 
         
-
 }

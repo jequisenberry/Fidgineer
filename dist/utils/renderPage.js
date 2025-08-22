@@ -1,5 +1,5 @@
-import { renderHeader } from "../components/renderHeader.js";
-import { renderFooter } from "../components/renderFooter.js";
+import { renderHeader } from "../components/header/renderHeader.js";
+import { renderFooter } from "../components/footer/renderFooter.js";
 /**
  * Renders the basic page structure with a container, header, main content, and footer.
  *
@@ -19,7 +19,7 @@ import { renderFooter } from "../components/renderFooter.js";
  *   mainContents: [featuredSection]
  * });
  */
-export function renderPage(options, clear = true) {
+function renderPage(options, clear = true) {
     var _a, _b, _c, _d, _e;
     const body = document.querySelector("body");
     if (!body)
